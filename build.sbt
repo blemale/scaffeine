@@ -17,7 +17,6 @@ scalaVersion := "2.11.7"
 libraryDependencies ++=
   Seq(
     Caffeine,
-    Java8Compat,
     Jsr305 % "provided",
     Scalactic % "test",
     Scalatest % "test"

@@ -1,10 +1,10 @@
 package com.github.blemale.scaffeine
 
 import com.github.benmanes.caffeine.cache.stats.CacheStats
-import com.github.benmanes.caffeine.cache.{ Cache => CaffeineCache, Policy }
+import com.github.benmanes.caffeine.cache.{ Policy, Cache => CaffeineCache }
+import com.github.blemale.scaffeine.FunctionConverters._
 
 import scala.collection.JavaConverters._
-import scala.compat.java8.FunctionConverters._
 
 object Cache {
   def apply[K, V](cache: CaffeineCache[K, V]) =
@@ -37,7 +37,7 @@ class Cache[K, V](val underlying: CaffeineCache[K, V]) {
    *                               left unestablished
    */
   def get(key: K, mappingFunction: K => V): V =
-    underlying.get(key, mappingFunction.asJava)
+    underlying.get(key, asJavaFunction(mappingFunction))
 
   /**
    * Returns a map of the values associated with `keys` in this cache. The returned map will

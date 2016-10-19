@@ -5,10 +5,10 @@ import java.{ lang, util }
 
 import com.github.benmanes.caffeine.cache._
 import com.github.benmanes.caffeine.cache.stats.StatsCounter
+import com.github.blemale.scaffeine.FunctionConverters._
+import com.github.blemale.scaffeine.FutureConverters._
 
 import scala.collection.JavaConverters._
-import scala.compat.java8.FunctionConverters._
-import scala.compat.java8.FutureConverters._
 import scala.concurrent.duration.Duration
 import scala.concurrent.{ ExecutionContext, Future }
 
@@ -373,7 +373,7 @@ case class Scaffeine[K, V](underlying: Caffeine[K, V]) {
     case Some(l) =>
       new AsyncLoaderAdapter[K1, V1](loader, reloadLoader) {
         override def asyncLoadAll(keys: lang.Iterable[_ <: K1], executor: Executor): CompletableFuture[util.Map[K1, V1]] =
-          l(keys.asScala).map(_.asJava).toJava.toCompletableFuture
+          l(keys.asScala).map(_.asJava).toJava
       }
     case None =>
       new AsyncLoaderAdapter[K1, V1](loader, reloadLoader)
@@ -387,11 +387,11 @@ case class Scaffeine[K, V](underlying: Caffeine[K, V]) {
       ec: ExecutionContext
   ) extends AsyncCacheLoader[K1, V1] {
     override def asyncLoad(key: K1, executor: Executor): CompletableFuture[V1] =
-      loader(key).toJava.toCompletableFuture
+      loader(key).toJava
 
     override def asyncReload(key: K1, oldValue: V1, executor: Executor): CompletableFuture[V1] =
       reloadLoader match {
-        case Some(l) => l(key, oldValue).toJava.toCompletableFuture
+        case Some(l) => l(key, oldValue).toJava
         case _ => super.asyncReload(key, oldValue, executor)
       }
   }

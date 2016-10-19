@@ -3,10 +3,10 @@ package com.github.blemale.scaffeine
 import java.util.concurrent.Executor
 
 import com.github.benmanes.caffeine.cache.{ AsyncLoadingCache => CaffeineAsyncLoadingCache }
+import com.github.blemale.scaffeine.FunctionConverters._
+import com.github.blemale.scaffeine.FutureConverters._
 
 import scala.collection.JavaConverters._
-import scala.compat.java8.FunctionConverters._
-import scala.compat.java8.FutureConverters._
 import scala.concurrent.Future
 
 object AsyncLoadingCache {
@@ -54,7 +54,7 @@ class AsyncLoadingCache[K, V](val underlying: CaffeineAsyncLoadingCache[K, V]) {
   def getFuture(key: K, mappingFunction: K => Future[V]): Future[V] =
     underlying.get(
       key,
-      asJavaBiFunction((k: K, _: Executor) => mappingFunction(k).toJava.toCompletableFuture)
+      asJavaBiFunction((k: K, _: Executor) => mappingFunction(k).toJava)
     ).toScala
 
   /**
@@ -92,7 +92,7 @@ class AsyncLoadingCache[K, V](val underlying: CaffeineAsyncLoadingCache[K, V]) {
    * @param valueFuture value to be associated with the specified key
    */
   def put(key: K, valueFuture: Future[V]): Unit =
-    underlying.put(key, valueFuture.toJava.toCompletableFuture)
+    underlying.put(key, valueFuture.toJava)
 
   /**
    * Returns a view of the entries stored in this cache as a synchronous [[LoadingCache]]. A
