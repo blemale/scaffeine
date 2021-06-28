@@ -20,7 +20,7 @@ inThisBuild(
 )
 
 scalaVersion := "2.12.14"
-crossScalaVersions := Seq("2.12.14", "2.13.6")
+crossScalaVersions := Seq("2.12.14", "2.13.6", "3.0.0")
 
 libraryDependencies ++=
   Seq(
@@ -28,11 +28,7 @@ libraryDependencies ++=
     "org.scala-lang.modules"       %% "scala-java8-compat" % "1.0.0",
     "com.google.code.findbugs"      % "jsr305"             % "3.0.2" % "provided",
     "org.scalactic"                %% "scalactic"          % "3.2.9" % "test",
-    "org.scalatest"                %% "scalatest"          % "3.2.9" % "test",
-    compilerPlugin(
-      "com.github.ghik" % "silencer-plugin" % "1.7.5" cross CrossVersion.full
-    ),
-    "com.github.ghik" % "silencer-lib" % "1.7.5" % Provided cross CrossVersion.full
+    "org.scalatest"                %% "scalatest"          % "3.2.9" % "test"
   )
 
 scalafmtOnCompile := true
@@ -94,7 +90,7 @@ scalacOptions ++=
       Nil
   })
 
-scalacOptions in (Compile, console) --= Seq(
+Compile / console / scalacOptions --= Seq(
   "-Ywarn-unused:imports",
   "-Xfatal-warnings"
 )
