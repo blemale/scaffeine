@@ -3,7 +3,7 @@ package com.github.blemale.scaffeine
 import com.github.benmanes.caffeine.cache.stats.CacheStats
 import com.github.benmanes.caffeine.cache.{Policy, Cache => CaffeineCache}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.compat.java8.FunctionConverters._
 
 object Cache {

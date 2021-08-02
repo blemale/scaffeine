@@ -1,13 +1,20 @@
 name: CI
-on: [push]
+on: [ push, pull_request ]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        scala: [ "2.11.12", "2.12.14", "2.13.6", "3.0.1" ]
     steps:
       - uses: actions/checkout@v2
       - uses: coursier/cache-action@v6
       - uses: olafurpg/setup-scala@v11
-      - run: sbt clean scalafmtSbtCheck scalafmtCheck coverage +test +doc
-      - run: sbt coverageReport coveralls
+        with:
+          java-version: zulu@1.11
+      - run: sbt ++${{ matrix.scala }} clean scalafmtSbtCheck scalafmtCheck test doc
+        if: startsWith(matrix.scala, '3')
+      - run: sbt ++${{ matrix.scala }} clean scalafmtSbtCheck scalafmtCheck coverage test doc coverageReport coveralls
+        if: startsWith(matrix.scala, '2')
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}

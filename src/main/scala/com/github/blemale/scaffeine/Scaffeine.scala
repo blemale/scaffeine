@@ -3,11 +3,10 @@ package com.github.blemale.scaffeine
 import com.github.benmanes.caffeine
 import com.github.benmanes.caffeine.cache.Scheduler
 import com.github.benmanes.caffeine.cache.stats.StatsCounter
-import com.github.ghik.silencer.silent
 
 import java.util.concurrent.{CompletableFuture, Executor}
 import java.{lang, util}
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.compat.java8.DurationConverters._
 import scala.compat.java8.FunctionConverters._
 import scala.compat.java8.FutureConverters._
@@ -294,7 +293,6 @@ case class Scaffeine[K, V](underlying: caffeine.cache.Caffeine[K, V]) {
     * @throws java.lang.IllegalStateException if a writer was already set or if the key strength is weak
     */
   @deprecated("Scheduled for removal", "scaffeine 4.1.0")
-  @silent("deprecated")
   def writer[K1 <: K, V1 <: V](
       writer: caffeine.cache.CacheWriter[K1, V1]
   ): Scaffeine[K1, V1] =

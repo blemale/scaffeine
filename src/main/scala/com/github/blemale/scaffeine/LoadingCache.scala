@@ -2,7 +2,7 @@ package com.github.blemale.scaffeine
 
 import com.github.benmanes.caffeine.cache.{LoadingCache => CaffeineLoadingCache}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 object LoadingCache {
 
