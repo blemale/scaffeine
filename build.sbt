@@ -34,6 +34,7 @@ libraryDependencies ++=
 scalafmtOnCompile := true
 
 scalacOptions ++= Seq("-target:jvm-1.8")
+javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
 scalacOptions ++=
   (CrossVersion.partialVersion(scalaVersion.value) match {
