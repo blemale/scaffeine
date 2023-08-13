@@ -1,6 +1,6 @@
-[![Build Status](https://img.shields.io/travis/blemale/scaffeine/master?style=flat-square)](https://travis-ci.org/blemale/scaffeine.svg?branch=master)
+[![CI](https://github.com/blemale/scaffeine/actions/workflows/ci.yml/badge.svg)](https://github.com/blemale/scaffeine/actions/workflows/ci.yml)
 [![Coverage Status](https://img.shields.io/coveralls/github/blemale/scaffeine/master?style=flat-square)](https://coveralls.io/github/blemale/scaffeine?branch=master)
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.blemale/scaffeine_2.12?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/com.github.blemale/scaffeine_2.12)
+[![scaffeine Scala version support](https://index.scala-lang.org/blemale/scaffeine/scaffeine/latest-by-scala-version.svg?platform=jvm)](https://index.scala-lang.org/blemale/scaffeine/scaffeine)
 [![License](https://img.shields.io/github/license/blemale/scaffeine?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Known Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/blemale/scaffeine?style=flat-square)](https://snyk.io/test/github/blemale/scaffeine?targetFile=build.sbt)
 
