@@ -35,7 +35,10 @@ class AsyncLoadingCacheSpec
         cache.put("foo", Future.successful("present"))
         val values = cache.getAll(List("foo", "bar"))
 
-        values.futureValue should contain only ("foo" -> "present", "bar" -> "loaded")
+        values.futureValue should contain only (
+          "foo" -> "present",
+          "bar" -> "loaded"
+        )
       }
 
       "get or bulk load all given values" in {
@@ -48,7 +51,10 @@ class AsyncLoadingCacheSpec
         cache.put("foo", Future.successful("present"))
         val values = cache.getAll(List("foo", "bar"))
 
-        values.futureValue should contain only ("foo" -> "present", "bar" -> "bulked")
+        values.futureValue should contain only (
+          "foo" -> "present",
+          "bar" -> "bulked"
+        )
       }
 
       "expose a synchronous view of itself" in {
@@ -83,7 +89,10 @@ class AsyncLoadingCacheSpec
         cache.put("foo", Future.successful("present"))
         val values = cache.getAll(List("foo", "bar"))
 
-        values.futureValue should contain only ("foo" -> "present", "bar" -> "loaded")
+        values.futureValue should contain only (
+          "foo" -> "present",
+          "bar" -> "loaded"
+        )
       }
 
       "get or bulk load all given values" in {
@@ -97,7 +106,10 @@ class AsyncLoadingCacheSpec
         cache.put("foo", Future.successful("present"))
         val values = cache.getAll(List("foo", "bar"))
 
-        values.futureValue should contain only ("foo" -> "present", "bar" -> "bulked")
+        values.futureValue should contain only (
+          "foo" -> "present",
+          "bar" -> "bulked"
+        )
       }
     }
 

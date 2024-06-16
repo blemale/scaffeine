@@ -54,7 +54,10 @@ class AsyncCacheSpec
       val values =
         cache.getAll(List("foo", "bar"), _.map(key => (key, "computed")).toMap)
 
-      values.futureValue should contain only ("foo" -> "present", "bar" -> "computed")
+      values.futureValue should contain only (
+        "foo" -> "present",
+        "bar" -> "computed"
+      )
     }
 
     "get or compute async all values" in {
@@ -66,7 +69,10 @@ class AsyncCacheSpec
         keys => Future.successful(keys.map(key => (key, "computed")).toMap)
       )
 
-      values.futureValue should contain only ("foo" -> "present", "bar" -> "computed")
+      values.futureValue should contain only (
+        "foo" -> "present",
+        "bar" -> "computed"
+      )
     }
 
     "put value" in {
