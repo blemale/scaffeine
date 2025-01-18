@@ -20,7 +20,7 @@ inThisBuild(
 )
 
 scalaVersion       := "2.12.20"
-crossScalaVersions := Seq("2.12.20", "2.13.15", "3.3.4")
+crossScalaVersions := Seq("2.12.20", "2.13.16", "3.3.4")
 
 libraryDependencies ++=
   Seq(
