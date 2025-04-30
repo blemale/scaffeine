@@ -1,6 +1,5 @@
 inThisBuild(
   List(
-    name         := "scaffeine",
     description  := "Thin Scala wrapper for Caffeine.",
     organization := "com.github.blemale",
     homepage     := Some(url("https://github.com/blemale/scaffeine")),
@@ -21,6 +20,19 @@ inThisBuild(
 
 scalaVersion       := "2.12.20"
 crossScalaVersions := Seq("2.12.20", "2.13.15", "3.3.5")
+
+apiURL := {
+  val scalaVersionSuffix =
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, 12)) => "2.12"
+      case Some((2, 13)) => "2.13"
+      case Some((3, _))  => "3"
+      case _ => throw new RuntimeException("Unsupported Scala version.")
+    }
+  val path      = s"${name.value}_$scalaVersionSuffix"
+  val versionId = version.value.takeWhile(_ != '+')
+  Some(url(s"https://www.javadoc.io/doc/com.github.blemale/$path/$versionId/"))
+}
 
 libraryDependencies ++=
   Seq(
