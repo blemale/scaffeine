@@ -1,6 +1,5 @@
 inThisBuild(
   List(
-    name         := "scaffeine",
     description  := "Thin Scala wrapper for Caffeine.",
     organization := "com.github.blemale",
     homepage     := Some(url("https://github.com/blemale/scaffeine")),
