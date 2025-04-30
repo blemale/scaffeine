@@ -10,13 +10,13 @@ A thin Scala wrapper for Caffeine (https://github.com/ben-manes/caffeine).
 
 Browse the [API docs](https://www.javadoc.io/doc/com.github.blemale/scaffeine_3/latest/com/github/blemale/scaffeine.html) for the latest release.
 
-## Motivations
+## Motivation
 
 [Caffeine](https://github.com/ben-manes/caffeine) is an awesome Java caching library.
 It has an impressive [performance](https://github.com/ben-manes/caffeine/wiki/Benchmarks) and a neat Java 8 API.
 
-However the API does not play very well with Scala.
-So this is the thinner wrapper we can came with to make Caffeine easy and idiomatic to use in Scala.
+However, the API does not play very well with Scala.
+This thin wrapper makes Caffeine easy and idiomatic to use in Scala.
 
 ## API
 
@@ -97,7 +97,7 @@ So this is the thinner wrapper we can came with to make Caffeine easy and idioma
 
 ### Download
 
-Download from [Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.blemale/scaffeine_2.12) or depend via SBT:
+Download from [Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.blemale/scaffeine_2.12) or depend on via SBT:
 
 ```sbt
 "com.github.blemale" %% "scaffeine" % "<version>" % "compile"
