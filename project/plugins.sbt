@@ -4,7 +4,7 @@ addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.3.15")
 
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.6.0")
 
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.4")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.7.1")
 
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.9.2")
 
